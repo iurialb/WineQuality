@@ -77,6 +77,54 @@ initializeParameters <- function(X, layer_size){
   return (params)
 }
 
+# Aplicando a função de inicializar os pesos
+
+init_params <- initializeParameters(train_x, layer_size)
+
+# Função de ativação
+# Criamos a função com base na função sigmóide
+
+sigmoid <- function(x){
+  return(1 / (1 + exp(-x)))
+}
+
+# Forward Propagation
+# Agora com todas as informações dos pesos e estrutura da rede, iniciamos o processo de geração de resultados. A multiplicação de matrizes será feita por meio do operador %*%. 
+
+forwardPropagation <- function(X, params, layer_size){
+  
+  n_h <- layer_size$n_h
+  n_y <- layer_size$n_y
+  
+  W1 <- params$W1
+  W2 <- params$W2
+  
+  
+  Z1 <- W1 %*% X
+  A1 <- sigmoid(Z1)
+  Z2 <- W2 %*% A1
+  A2 <- sigmoid(Z2)
+  
+  cache <- list("Z1" = Z1,
+                "A1" = A1, 
+                "Z2" = Z2,
+                "A2" = A2)
+  
+  return (cache)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -22,3 +22,45 @@ train <- data.frame(data[1:train_test_split_index,])
 
 # Incluindo o total junto com a base de treinamento
 test <- data.frame(data[(train_test_split_index+1): nrow(data),])
+
+# Padronizando o data frame, onde o x será as features (variável independente) e o y a target (variável dependente)
+train_x <- data.frame(train[1:11])
+train_y <- data.frame(train[12])
+
+# Fazer o mesmo para a base de teste
+test_x <- data.frame(test[1:11])
+test_y <- data.frame(test[12])
+
+# Realizar a transposição da matriz para fins didáticos
+train_x <- t(train_x)
+train_y <- t(train_y)
+
+test_x <- t(test_x )
+test_y <- t(test_y)
+
+# Desenvolvendo a Arquitetura de Rede
+
+getLayerSize <- function(X, y, hidden_neurons) {
+  n_x <- dim(X)[1] #quantidade de linhas de x = neurônios da camada de entrada
+  n_h <- hidden_neurons #quantidade de neurônios na camada escondida
+  n_y <- dim(y)[1] #quantidade de linhas de y = neurônios da camada de saída
+  
+  size <- list("n_x" = n_x,
+               "n_h" = n_h,
+               "n_y" = n_y)
+  
+  return(size)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -113,9 +113,25 @@ forwardPropagation <- function(X, params, layer_size){
   return (cache)
 }
 
+# Aplicando de fato a função de Forward Propagation
+
+fwd_prop <- forwardPropagation(train_x, init_params, layer_size)
+
+# O modelo até o momento não possui métricas para calcular a previsibilidade dos resultados
+# Isso ocorre, porque utilizamos valores aleatórios nos pesos para saber o quanto estamos errando
+# Nesse sentido, vamos agora utilizar a função custo para realizar o processo de Back propagation com o Erro Quadrático Médio
 
 
-
+computeCost <- function(y, cache) {
+  
+  m <- dim(y)[2]
+  
+  A2 <- cache$A2
+  
+  cost <- sum((y-A2)^2)/m
+  
+  return (cost)
+}
 
 
 

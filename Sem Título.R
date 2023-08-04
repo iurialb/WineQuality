@@ -52,10 +52,30 @@ getLayerSize <- function(X, y, hidden_neurons) {
   return(size)
 }
 
+# Aplicando a função de criação de arquitetura
+# O valor de '4' para a camada escondida é escolhida de forma arbitrária
+
+layer_size <- getLayerSize(train_x, train_y, hidden_neurons = 4)
+layer_size
+
+# Inicializando os Parâmetros
+# Com base na arquitetura de rede montada iremos inicializar os parâmetros (pesos) randomicamente.
 
 
-
-
+initializeParameters <- function(X, layer_size){
+  
+  n_x <- layer_size$n_x
+  n_h <- layer_size$n_h
+  n_y <- layer_size$n_y
+  
+  W1 <- matrix(runif(n_h * n_x), nrow = n_h, ncol = n_x, byrow = TRUE) * 0.01
+  W2 <- matrix(runif(n_y * n_h), nrow = n_y, ncol = n_h, byrow = TRUE) * 0.01
+  
+  params <- list("W1" = W1,
+                 "W2" = W2)
+  
+  return (params)
+}
 
 
 
